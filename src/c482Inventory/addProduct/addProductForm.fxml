@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<HBox fx:id="addProductPane" xmlns:fx="http://javafx.com/fxml" fx:controller="c482Inventory.addProduct.AddProductController">
+
+    <padding>
+        <Insets topRightBottomLeft="30"/>
+    </padding>
+
+    <HBox style="-fx-border-color: black; -fx-border-radius: 10">
+
+        <padding>
+            <Insets>
+                <top>20</top>
+                <bottom>20</bottom>
+                <left>30</left>
+                <right>30</right>
+            </Insets>
+        </padding>
+
+        <VBox>
+
+            <padding>
+                <Insets topRightBottomLeft="20"/>
+            </padding>
+
+            <Label text="Add Product">
+                <font>
+                    <Font name="System bold" size="16"/>
+                </font>
+            </Label>
+
+            <GridPane hgap="15" vgap="20" maxWidth="350">
+                <Label text="ID" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label text="Name" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label text="Inv" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label text="Price" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label text="Max" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+
+                <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="2" promptText="Auto Gen - Disabled" disable="true"/>
+                <TextField fx:id="nameField" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.columnSpan="2"/>
+                <TextField fx:id="invField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <TextField fx:id="priceField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <TextField fx:id="maxField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                <Label text="Min" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+
+                <TextField fx:id="minField" GridPane.rowIndex="4" GridPane.columnIndex="3"/>
+
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="15"/>
+                    <ColumnConstraints percentWidth="35"/>
+                    <ColumnConstraints percentWidth="20"/>
+                    <ColumnConstraints percentWidth="30"/>
+                </columnConstraints>
+
+                <padding>
+                    <Insets topRightBottomLeft="30"/>
+                </padding>
+            </GridPane>
+
+            <Label fx:id="errorMessage" disable="true" style="-fx-text-background-color: red" wrapText="true" maxWidth="350">
+                <padding>
+                    <Insets>
+                        <top>5</top>
+                        <bottom>15</bottom>
+                    </Insets>
+                </padding>
+
+                <font>
+                    <Font name="System bold" size="14"/>
+                </font>
+            </Label>
+
+        </VBox>
+
+        <VBox>
+
+            <HBox alignment="CENTER_RIGHT">
+                <TextField fx:id="searchPartField" promptText="Search by Part ID or Name" minWidth="175"/>
+
+                <padding>
+                    <Insets>
+                        <bottom>15</bottom>
+                    </Insets>
+                </padding>
+            </HBox>
+
+            <TableView fx:id="partTableView" maxHeight="200">
+                <columns>
+                    <TableColumn fx:id="partId" minWidth="120" text="Part ID"/>
+                    <TableColumn fx:id="partName" minWidth="120" text="Part Name"/>
+                    <TableColumn fx:id="partInvLevel" minWidth="120" text="Inventory Level"/>
+                    <TableColumn fx:id="partPricePerUnit" minWidth="120" text="Price/Cost per Unit"/>
+                </columns>
+            </TableView>
+
+            <ButtonBar>
+                <buttons>
+                    <Button text="Add" onAction="#addComponentButtonHandler"/>
+                </buttons>
+
+                <padding>
+                    <Insets topRightBottomLeft="20"/>
+                </padding>
+            </ButtonBar>
+
+            <TableView fx:id="componentTableView" maxHeight="200">
+                <columns>
+                    <TableColumn fx:id="componentId" minWidth="120" text="Part ID"/>
+                    <TableColumn fx:id="componentName" minWidth="120" text="Part Name"/>
+                    <TableColumn fx:id="componentInvLevel" minWidth="120" text="Inventory Level"/>
+                    <TableColumn fx:id="componentPricePerUnit" minWidth="120" text="Price/Cost per Unit"/>
+                </columns>
+            </TableView>
+
+            <VBox>
+                <HBox alignment="CENTER_RIGHT">
+                    <Button text="Remove Associated Part" onAction="#removeComponentButtonHandler"/>
+
+                    <padding>
+                        <Insets topRightBottomLeft="10"/>
+                    </padding>
+                </HBox>
+
+
+                <HBox alignment="CENTER_RIGHT" spacing="50">
+                    <Button text="Save" onAction="#addProductButtonHandler"/>
+                    <Button text="Cancel" onAction="#closeWindowHandler"/>
+                    <padding>
+                        <Insets topRightBottomLeft="10"/>
+                    </padding>
+                </HBox>
+
+            </VBox>
+
+        </VBox>
+
+    </HBox>
+
+</HBox>

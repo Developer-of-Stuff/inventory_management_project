@@ -1,0 +1,92 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<HBox fx:id="addPartPane" xmlns:fx="http://javafx.com/fxml" fx:controller="c482Inventory.addPart.AddPartController" alignment="CENTER">
+
+    <padding>
+        <Insets topRightBottomLeft="30"/>
+    </padding>
+
+
+    <VBox>
+
+        <Label fx:id="errorMessage" disable="true" style="-fx-text-background-color: red">
+            <padding>
+                <Insets>
+                    <top>5</top>
+                    <bottom>15</bottom>
+                </Insets>
+            </padding>
+
+            <font>
+                <Font name="System bold" size="14"/>
+            </font>
+        </Label>
+
+        <HBox spacing="15">
+            <Label text="Add Part">
+                <font>
+                    <Font name="System bold" size="14"/>
+                </font>
+            </Label>
+
+            <fx:define>
+                <ToggleGroup fx:id="addPartRadioButtons"/>
+            </fx:define>
+
+            <RadioButton fx:id="inHouseButton" text="In-House" toggleGroup="$addPartRadioButtons" selected="true" onAction="#radioButtonListener"/>
+            <RadioButton fx:id="outsourcedButton" text="Outsourced" toggleGroup="$addPartRadioButtons" onAction="#radioButtonListener"/>
+
+            <padding>
+                <Insets>
+                    <bottom>20</bottom>
+                </Insets>
+            </padding>
+        </HBox>
+
+        <GridPane vgap="10" hgap="10" maxWidth="450">
+            <Label text="ID" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Label text="Name" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label text="Inv" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <Label text="Price/Cost" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <Label text="Max" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <Label fx:id="machineIdCompanyNameLabel" text="Machine ID" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+
+            <TextField promptText="Auto Gen-Disabled" disable="true" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                <font>
+                    <Font name="System italics"/>
+                </font>
+            </TextField>
+            <TextField fx:id="nameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <TextField fx:id="invField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <TextField fx:id="priceField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <TextField fx:id="maxField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            <TextField fx:id="machineIdCompanyNameField" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+            <Label text="Min" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+
+            <TextField fx:id="minField" GridPane.rowIndex="4" GridPane.columnIndex="3"/>
+
+            <columnConstraints>
+                <ColumnConstraints percentWidth="25"/>
+                <ColumnConstraints percentWidth="30"/>
+                <ColumnConstraints percentWidth="15" halignment="CENTER"/>
+                <ColumnConstraints percentWidth="30"/>
+            </columnConstraints>
+        </GridPane>
+
+        <ButtonBar>
+            <buttons>
+                <Button text="Save" onAction="#addPartFormHandler"/>
+                <Button text="Cancel" onAction="#closeWindowHandler"/>
+            </buttons>
+
+            <padding>
+                <Insets topRightBottomLeft="25"/>
+            </padding>
+        </ButtonBar>
+
+    </VBox>
+
+</HBox>
